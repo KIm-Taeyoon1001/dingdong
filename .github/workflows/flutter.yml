@@ -1,0 +1,25 @@
+name: Flutter Android CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter create . --platforms=android --org kr.dingdong
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter build apk --debug --dart-define=NEIS_API_KEY=${{ secrets.NEIS_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dingdong-debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 14
