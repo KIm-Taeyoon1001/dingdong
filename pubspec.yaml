@@ -1,0 +1,21 @@
+name: dingdong
+description: School timetable and meal companion app.
+publish_to: "none"
+version: 0.1.0+1
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.2.2
+  supabase_flutter: ^2.8.0
+  home_widget: ^0.7.0
+  shared_preferences: ^2.3.3
+  intl: ^0.20.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+flutter:
+  uses-material-design: true
